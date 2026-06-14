@@ -1,9 +1,16 @@
 import { PlatformService } from './services/PlatformService.js';
+import { StorageService } from './services/StorageService.js';
+import { Game } from './core/Game.js';
+import { Input } from './core/Input.js';
 import { Renderer } from './core/Renderer.js';
+import { FarmScene } from './scenes/FarmScene.js';
 
 const platform = new PlatformService();
 const renderer = new Renderer(platform);
+const input = new Input(platform);
+const storage = new StorageService(platform);
+const game = new Game({ platform, renderer, input, storage });
 
-renderer.clear('#182235');
-renderer.text('夜市灵田：偷到就跑', 24, 80, 24, '#ffe6a3');
-renderer.text('正在加载灵田...', 24, 120, 16, '#ffffff');
+game.registerScene('farm', new FarmScene(game));
+game.setScene('farm');
+game.start();
