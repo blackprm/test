@@ -27,3 +27,16 @@ test('PlatformService delegates storage to runtime when available', () => {
 
   assert.deepEqual(platform.getStorageSync('state'), { gold: 120 });
 });
+
+test('PlatformService delegates share message to runtime when available', () => {
+  const calls = [];
+  const platform = new PlatformService({
+    shareAppMessage(payload) {
+      calls.push(payload);
+    },
+  });
+
+  platform.shareAppMessage({ title: '今晚偷到就跑！' });
+
+  assert.deepEqual(calls, [{ title: '今晚偷到就跑！' }]);
+});

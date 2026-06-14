@@ -58,4 +58,8 @@ export class PlatformService {
     }
     return null;
   }
+
+  shareAppMessage(payload) {
+    if (this.runtime && this.runtime.shareAppMessage) this.runtime.shareAppMessage(payload);
+  }
 }

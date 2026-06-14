@@ -44,3 +44,21 @@ test('ResultScene rewarded retry returns to steal scene', async () => {
   assert.deepEqual(adCalls, ['retrySteal']);
   assert.deepEqual(sceneCalls, ['steal']);
 });
+
+test('ResultScene success can share steal result', () => {
+  const shareCalls = [];
+  const { scene, tapZones } = createResultScene();
+  scene.game.shareService = {
+    buildStealMessage(result) {
+      return `${result.targetName}-${result.optionLabel}`;
+    },
+    share(message) {
+      shareCalls.push(message);
+    },
+  };
+
+  scene.enter({ success: true, reward: 98, gems: 1, targetName: '灯笼摊主', optionLabel: '变异作物', canRetry: false });
+  tapZones.get('share-result')();
+
+  assert.deepEqual(shareCalls, ['灯笼摊主-变异作物']);
+});
