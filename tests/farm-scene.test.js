@@ -56,3 +56,28 @@ test('FarmScene tapping mature plot harvests and clears it', () => {
   assert.equal(game.state.gold, 245);
   assert.deepEqual(game.state.collection, ['carrot:normal']);
 });
+
+test('FarmScene render loads background and crop art', () => {
+  const { scene, game } = createFarmScene();
+  const calls = [];
+  game.state.plots[0] = { seedId: 'carrot', plantedAt: 0, mutationId: 'normal', harvested: false };
+  const renderer = {
+    width: 390,
+    height: 844,
+    clear: (color) => calls.push(['clear', color]),
+    loadImage: (id, src) => calls.push(['loadImage', id, src]),
+    drawImage: (id) => {
+      calls.push(['drawImage', id]);
+      return true;
+    },
+    roundRect: () => {},
+    text: () => {},
+  };
+
+  scene.enter();
+  scene.render(renderer);
+
+  assert(calls.some((call) => call[0] === 'loadImage' && call[1] === 'night-market-bg' && call[2] === 'assets/generated/night-market-bg.png'));
+  assert(calls.some((call) => call[0] === 'loadImage' && call[1] === 'seed-carrot' && call[2] === 'assets/generated/icon-carrot.png'));
+  assert(calls.some((call) => call[0] === 'drawImage' && call[1] === 'seed-carrot'));
+});

@@ -2,6 +2,16 @@ import { Scene } from '../core/Scene.js';
 import { cropValue, getMutation, getSeed, isMature, nowSeconds, upgradeCost } from '../systems/economy.js';
 import { harvestPlot, plantSeed, upgradeStall } from '../systems/farmState.js';
 
+const FARM_ASSETS = {
+  background: 'assets/generated/night-market-bg.png',
+  pet: 'assets/generated/icon-pet.png',
+  seeds: {
+    carrot: 'assets/generated/icon-carrot.png',
+    mushroom: 'assets/generated/icon-mushroom.png',
+    starMelon: 'assets/generated/icon-star-melon.png',
+  },
+};
+
 export class FarmScene extends Scene {
   enter() {
     this.message = '点田格种菜，成熟后收获。';
@@ -57,10 +67,14 @@ export class FarmScene extends Scene {
 
   render(renderer) {
     renderer.clear('#182235');
+    renderer.loadImage('night-market-bg', FARM_ASSETS.background);
+    renderer.drawImage('night-market-bg', 0, 0, renderer.width, renderer.height);
     renderer.text('夜市灵田：偷到就跑', 22, 38, 24, '#ffe6a3');
     renderer.text(`金币 ${this.game.state.gold}  基因 ${this.game.state.gems}`, 22, 72, 18, '#ffffff');
     renderer.text(`摊位 Lv.${this.game.state.stallLevel}  陷阱 ${this.game.state.traps}  守田宠物 Lv.${this.game.state.petLevel}`, 22, 100, 15, '#b9d2ff');
     renderer.text(this.message, 22, 132, 15, '#ffffff');
+    renderer.loadImage('pet-guard', FARM_ASSETS.pet);
+    renderer.drawImage('pet-guard', renderer.width - 76, 28, 52, 52);
 
     const margin = 22;
     const cardW = (renderer.width - margin * 2 - 16) / 3;
@@ -80,9 +94,12 @@ export class FarmScene extends Scene {
       const mutation = getMutation(plot.mutationId);
       const mature = isMature(plot);
       const value = cropValue(plot.seedId, plot.mutationId);
-      renderer.text(seed.name, x + cardW / 2, y + 30, 16, '#ffffff', 'center');
-      renderer.text(mutation.name, x + cardW / 2, y + 56, 13, mutation.id === 'normal' ? '#9bb2d8' : '#ffd166', 'center');
-      renderer.text(mature ? `可收 ${value}` : '成长中', x + cardW / 2, y + 86, 13, mature ? '#66f0a6' : '#8fa8d8', 'center');
+      const assetId = `seed-${plot.seedId}`;
+      renderer.loadImage(assetId, FARM_ASSETS.seeds[plot.seedId]);
+      renderer.drawImage(assetId, x + cardW / 2 - 28, y + 12, 56, 56);
+      renderer.text(seed.name, x + cardW / 2, y + 76, 15, '#ffffff', 'center');
+      renderer.text(mutation.name, x + cardW / 2, y + 96, 12, mutation.id === 'normal' ? '#9bb2d8' : '#ffd166', 'center');
+      renderer.text(mature ? `可收 ${value}` : '成长中', x + cardW / 2, y + 112, 12, mature ? '#66f0a6' : '#8fa8d8', 'center');
     });
 
     renderer.roundRect(22, renderer.height - 160, renderer.width - 44, 48, 8, '#eb5e55');
