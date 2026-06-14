@@ -1,5 +1,4 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
+import { assert, test } from './_harness.js';
 import { Input } from '../src/core/Input.js';
 
 test('Input dispatches tap to the first matching zone', () => {

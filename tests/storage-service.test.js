@@ -1,5 +1,4 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
+import { assert, test } from './_harness.js';
 import { StorageService } from '../src/services/StorageService.js';
 
 test('StorageService creates initial farm state when nothing is saved', () => {

@@ -1,5 +1,4 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
+import { assert, test } from './_harness.js';
 import { StealScene } from '../src/scenes/StealScene.js';
 
 function createStealScene() {

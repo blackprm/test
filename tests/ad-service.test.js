@@ -1,5 +1,4 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
+import { assert, test } from './_harness.js';
 import { AdService } from '../src/services/AdService.js';
 
 test('AdService mock rewarded video resolves as rewarded', async () => {

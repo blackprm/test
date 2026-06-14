@@ -1,5 +1,4 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
+import { assert, test } from './_harness.js';
 import { cropValue, getSeed, isMature, upgradeCost } from '../src/systems/economy.js';
 
 test('getSeed returns configured seed definitions', () => {

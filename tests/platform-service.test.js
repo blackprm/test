@@ -1,5 +1,4 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
+import { assert, test } from './_harness.js';
 import { PlatformService } from '../src/services/PlatformService.js';
 
 test('PlatformService falls back to default system info without tt runtime', () => {

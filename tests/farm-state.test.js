@@ -1,5 +1,4 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
+import { assert, test } from './_harness.js';
 import { harvestPlot, plantSeed, upgradeStall } from '../src/systems/farmState.js';
 
 function makeState() {
