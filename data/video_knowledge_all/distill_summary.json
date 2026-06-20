@@ -1,0 +1,51 @@
+{
+  "source": "data/video_knowledge_pipeline/01_discover_list.json",
+  "total": 5,
+  "results": [
+    {
+      "platform_video_id": "7648701859682667811",
+      "title": "一条视频教会你用升格慢动作锁住炸裂瞬间 好闺蜜！是时候升级你的AI镜头语言啦✨",
+      "status": "completed",
+      "output": "data/video_knowledge_all/context_packs/7648701859682667811.md",
+      "chars": 1464,
+      "seconds": 59.1,
+      "media_content_length": 4321705
+    },
+    {
+      "platform_video_id": "7648538903279865088",
+      "title": "精准控制AI摄像机！两大创意玩法🔥 好闺蜜！是时候升级你的AI镜头语言啦✨",
+      "status": "completed",
+      "output": "data/video_knowledge_all/context_packs/7648538903279865088.md",
+      "chars": 1546,
+      "seconds": 50.4,
+      "media_content_length": 6676397
+    },
+    {
+      "platform_video_id": "7646653880037592355",
+      "title": "AI演员养成记🎬教写有演技的视频Prompt 好闺蜜！是时候学习新的AI镜头语言了！",
+      "status": "completed",
+      "output": "data/video_knowledge_all/context_packs/7646653880037592355.md",
+      "chars": 1066,
+      "seconds": 45.7,
+      "media_content_length": 4258489
+    },
+    {
+      "platform_video_id": "7644804349218065704",
+      "title": "唱歌💃跳舞🎬剧情全拿捏！三套AI画布工作流 ✨好闺蜜就是要一起进步～",
+      "status": "completed",
+      "output": "data/video_knowledge_all/context_packs/7644804349218065704.md",
+      "chars": 1276,
+      "seconds": null,
+      "fallback": "compressed_data_url_video"
+    },
+    {
+      "platform_video_id": "7641996695290531113",
+      "title": "当华强买瓜撞上格莱美级舞台 让你们感觉一下来自即刻造梦的SD2.0 1080P直出的AI视觉盛宴🍉🏆 #AI教程  #AI演唱会  #AI提示词   #Seedance2",
+      "status": "completed",
+      "output": "data/video_knowledge_all/context_packs/7641996695290531113.md",
+      "chars": 1515,
+      "seconds": 115.2,
+      "media_content_length": 13534875
+    }
+  ]
+}

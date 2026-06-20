@@ -1,0 +1,3 @@
+display_name: Douyin Video Knowledge Distiller
+short_description: Distill Douyin videos into LLM context.
+default_prompt: Distill this Douyin creator homepage into Markdown teaching knowledge packs for downstream LLM context.
